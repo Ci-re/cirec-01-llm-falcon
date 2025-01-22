@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 import google.generativeai as genai
-from scripts.find import basic_search
 import os
 
 load_dotenv()
@@ -53,7 +52,7 @@ def llm(prompt):
     return result.text
 
 
-def rag(query):
-    results = basic_search(query)
-    prompt = build_prompt(query, results)
-    return llm(prompt)
+# def rag(query):
+#     results = basic_search(query)
+#     prompt = build_prompt(query, results)
+#     return llm(prompt)

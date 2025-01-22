@@ -21,6 +21,7 @@ python-dotenv = "1.0.1"
 torch = {version = "^2.5.1+cpu", source = "pytorch_cpu"}
 torchvision = {version = "^0.20.1+cpu", source = "pytorch_cpu"}
 sentence-transformers = "^3.3.1"
+streamlit = "^1.41.1"
 
 
 [[tool.poetry.source]]
