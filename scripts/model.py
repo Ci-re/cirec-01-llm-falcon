@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import google.generativeai as genai
-from find import basic_search
+from scripts.find import basic_search
 import os
 
 load_dotenv()
@@ -8,7 +8,7 @@ genai.configure(api_key=os.environ["API_KEY"])
 
 
 def build_prompt(query, search_results):
-    
+
     """
         Builds a prompt for a spiritual assistant.
 
@@ -44,7 +44,7 @@ def build_prompt(query, search_results):
     for doc in search_results:
         context = f'{context}sub.category: {doc["sub.category"]} \nquestion: {doc["question"]} \nanswer: {doc["answer"]}\n\n'
 
-    return prompt_template.format(question= query, context=search_results).strip()
+    return prompt_template.format(question= query, context=context).strip()
 
 
 def llm(prompt):
