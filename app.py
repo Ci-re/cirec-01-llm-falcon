@@ -23,7 +23,10 @@ def reset_chat():
     st.session_state.context = None
     gc.collect()
 
-es = Elasticsearch(HOST_URL)
+if "elastic_conn" not in st.session_state:
+    st.session_state.elastic_conn = Elasticsearch(HOST_URL)
+
+
 data = load_and_prepare_data()
 
 # try:
@@ -43,9 +46,11 @@ data = load_and_prepare_data()
 #     bs = BasicSearch(data=data, num_results=5)
 #     search_algo = bs.create_index()
 
-
-bs = BasicSearch(data=data, num_results=5)
-search_algo = bs.create_index()
+@st.cache_resource
+def basic_search():
+    bs = BasicSearch(data=data, num_results=5)
+    bs.create_index()
+    return bs
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -60,7 +65,7 @@ def response_gen(streaming_response):
     for word in streaming_response.split():
         yield f"{word} "
         time.sleep(0.05)
-
+        
 if prompt := st.chat_input("What is up?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
@@ -72,7 +77,7 @@ if prompt := st.chat_input("What is up?"):
         message_placeholder = st.empty()
         full_response = ""
         # if not AdvancedElasticSearch.connect | VectorSearch.connect:
-        search_results = bs.basic_search(query=prompt)
+        search_results = basic_search().basic_search(query=prompt)
         print(search_results[0])
         # search_results = vs.vector_search(query=prompt)
 

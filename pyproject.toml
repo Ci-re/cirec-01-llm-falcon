@@ -22,6 +22,9 @@ torch = {version = "^2.5.1+cpu", source = "pytorch_cpu"}
 torchvision = {version = "^0.20.1+cpu", source = "pytorch_cpu"}
 sentence-transformers = "^3.3.1"
 streamlit = "^1.41.1"
+dask = {extras = ["distributed"], version = "^2025.1.0"}
+graphviz = "^0.20.3"
+bokeh = "^3.6.2"
 
 
 [[tool.poetry.source]]
