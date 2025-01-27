@@ -25,6 +25,9 @@ streamlit = "^1.41.1"
 dask = {extras = ["distributed"], version = "^2025.1.0"}
 graphviz = "^0.20.3"
 bokeh = "^3.6.2"
+deepmultilingualpunctuation = "^1.0.1"
+langchain-text-splitters = "^0.3.5"
+rake-nltk = "^1.0.6"
 
 
 [[tool.poetry.source]]

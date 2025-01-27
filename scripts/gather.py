@@ -14,5 +14,3 @@ def load_data() -> list:
     with open(os.path.join(DATA_BASEPATH, 'questions_answer.json'), 'rt') as file_in:
         data: list = json.load(file_in)
     return data
-
-

@@ -25,20 +25,27 @@ class BasicSearch:
         self.data = data
         self.num_results = num_results
         self.index = None
+        self.search_kwargs = {}
 
 
-    def create_index(self):
+    def create_index(self, **kwargs):
         '''
         data: pd.DataFrame
         return: Index
         
         This function takes a DataFrame and returns an Index object.
+        
         '''
+        print(kwargs)
+        
+        text_fields = kwargs["text_fields"]
+        keyword_fields = kwargs["keyword_fields"]
         
         self.index = Index(
-            text_fields = ["question", "answer", "sub.category"],
-            keyword_fields = ["category"]
+            text_fields = text_fields,
+            keyword_fields = keyword_fields
         )
+        
         self.index.fit(self.data)    
 
     def basic_search(self, query) -> list:

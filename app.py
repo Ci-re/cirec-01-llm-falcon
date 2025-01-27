@@ -26,7 +26,6 @@ def reset_chat():
 if "elastic_conn" not in st.session_state:
     st.session_state.elastic_conn = Elasticsearch(HOST_URL)
 
-
 data = load_and_prepare_data()
 
 # try:
