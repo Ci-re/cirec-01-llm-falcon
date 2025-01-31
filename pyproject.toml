@@ -8,7 +8,7 @@ packages = [{include = "scripts"}]
 include = ["scripts/*", "datasets/*"]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
 datasets = "3.2.0"
 elasticsearch = "8.17.0"
 google-generativeai = "0.8.3"
@@ -28,6 +28,7 @@ bokeh = "^3.6.2"
 deepmultilingualpunctuation = "^1.0.1"
 langchain-text-splitters = "^0.3.5"
 rake-nltk = "^1.0.6"
+spacy = "^3.8.4"
 
 
 [[tool.poetry.source]]
